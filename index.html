@@ -1214,15 +1214,15 @@
                             <div class="cost-breakdown">
                                 <div class="cost-item">
                                     <div class="cost-label">Initial Investment</div>
-                                    <div class="cost-value">$50-150K</div>
+                                    <div class="cost-value">£50-150K</div>
                                 </div>
                                 <div class="cost-item">
                                     <div class="cost-label">Monthly Operations</div>
-                                    <div class="cost-value">$5-15K</div>
+                                    <div class="cost-value">£5-15K</div>
                                 </div>
                                 <div class="cost-item">
                                     <div class="cost-label">Training Costs</div>
-                                    <div class="cost-value">$10-30K</div>
+                                    <div class="cost-value">£10-30K</div>
                                 </div>
                                 <div class="cost-item">
                                     <div class="cost-label">ROI Timeline</div>
@@ -1627,7 +1627,7 @@
             }
             
             // In a real implementation, this would expand additional content
-            alert(`Additional details for: ${questionId}`);
+            alert(`Additional details for: £{questionId}`);
         }
 
         function updateProgress() {
@@ -1665,7 +1665,7 @@
         }
 
         function updateNavStatus(sectionId) {
-            const navButton = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
+            const navButton = document.querySelector(`[onclick="showSection('£{sectionId}')"]`);
             if (!navButton) return;
             
             const statusIndicator = navButton.querySelector('.status-indicator');
@@ -1721,13 +1721,13 @@
                 const card = document.createElement('div');
                 card.className = 'summary-card';
                 card.innerHTML = `
-                    <h4>${category}</h4>
+                    <h4>£{category}</h4>
                     <div class="summary-decisions">
-                        ${categoryDecisions.map(section => `
+                        £{categoryDecisions.map(section => `
                             <div class="summary-decision">
-                                <strong>${section.section}:</strong>
-                                ${Object.entries(section.primary).map(([key, value]) => 
-                                    `${value.toUpperCase()}`
+                                <strong>£{section.section}:</strong>
+                                £{Object.entries(section.primary).map(([key, value]) => 
+                                    `£{value.toUpperCase()}`
                                 ).join(', ')}
                             </div>
                         `).join('')}
@@ -1756,7 +1756,7 @@
         function generateDetailedReport() {
             let report = 'ENTERPRISE DECISION FRAMEWORK REPORT\n';
             report += '=====================================\n\n';
-            report += `Generated: ${new Date().toLocaleString()}\n\n`;
+            report += `Generated: £{new Date().toLocaleString()}\n\n`;
             
             report += 'EXECUTIVE SUMMARY\n';
             report += '-----------------\n';
@@ -1765,17 +1765,17 @@
             // Add detailed sections
             Object.entries(decisions.primary).forEach(([sectionId, sectionDecisions]) => {
                 const sectionData = sections[sectionId];
-                report += `\n${sectionData.title.toUpperCase()}\n`;
+                report += `\n£{sectionData.title.toUpperCase()}\n`;
                 report += '-'.repeat(sectionData.title.length) + '\n';
                 
                 Object.entries(sectionDecisions).forEach(([decision, choice]) => {
-                    report += `• ${decision}: ${choice.toUpperCase()}\n`;
+                    report += `• £{decision}: £{choice.toUpperCase()}\n`;
                 });
                 
                 if (decisions.sub[sectionId]) {
                     report += '\nDetailed Analysis:\n';
                     Object.entries(decisions.sub[sectionId]).forEach(([subDecision, choice]) => {
-                        report += `  - ${subDecision}: ${choice}\n`;
+                        report += `  - £{subDecision}: £{choice}\n`;
                     });
                 }
             });
